@@ -1,0 +1,8 @@
+flask
+flask_sqlalchemy
+pandas
+python-dotenv
+flask-login
+openpyxl
+matplotlib
+flask-migrate

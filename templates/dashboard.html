@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">
+
+    Dashboard
+
+</h2>
+
+<div class="row">
+
+    <div class="col-md-3">
+
+        <div class="card shadow">
+
+            <div class="card-body">
+
+                <h6>Total Crimes</h6>
+
+                <h2>{{ total_crimes }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card shadow">
+
+            <div class="card-body">
+
+                <h6>Total States</h6>
+
+                <h2>{{ total_states }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card shadow">
+
+            <div class="card-body">
+
+                <h6>Total Districts</h6>
+
+                <h2>{{ total_districts }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card shadow">
+
+            <div class="card-body">
+
+                <h6>Total Loss</h6>
+
+                <h4>
+
+                    ₹ {{ "{:,.0f}".format(total_loss) }}
+
+                </h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

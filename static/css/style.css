@@ -1,0 +1,25 @@
+body{
+
+    background:#f5f7fb;
+
+}
+
+.card{
+
+    border:none;
+
+    border-radius:12px;
+
+}
+
+.card-body{
+
+    text-align:center;
+
+}
+
+h2{
+
+    font-weight:bold;
+
+}
