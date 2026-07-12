@@ -6,10 +6,12 @@ dashboard_bp = Blueprint("dashboard", __name__)
 
 @dashboard_bp.route("/")
 def dashboard():
-
     data = get_dashboard_data()
 
     return render_template(
         "dashboard.html",
-        **data
+        total_crimes=data["total_crimes"],
+        total_states=data["total_states"],
+        total_districts=data["total_districts"],
+        total_loss=data["total_loss"]
     )

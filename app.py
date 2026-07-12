@@ -8,6 +8,8 @@ from models.crime import Crime
 
 from routes.dashboard import dashboard_bp
 
+from routes.api import api_bp
+
 
 app = Flask(__name__)
 
@@ -18,6 +20,7 @@ db.init_app(app)
 
 app.register_blueprint(dashboard_bp)
 
+app.register_blueprint(api_bp)
 
 if __name__ == "__main__":
 

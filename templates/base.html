@@ -5,42 +5,164 @@
 
     <meta charset="UTF-8">
 
-    <title>CrimeLens India</title>
-
     <meta name="viewport"
           content="width=device-width, initial-scale=1">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet">
+    <title>CrimeLens India</title>
 
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='plugins/bootstrap/dist/css/bootstrap.min.css') }}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='plugins/@fortawesome/fontawesome-free/css/all.min.css') }}">
+
+    <!-- AdminLTE -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='dist/css/adminlte.min.css') }}">
+
+    <!-- Custom CSS -->
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/style.css') }}">
 
 </head>
 
-<body>
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
 
-<nav class="navbar navbar-dark bg-dark">
+<div class="app-wrapper">
 
-    <div class="container-fluid">
+    <!-- Navbar -->
+    <nav class="app-header navbar navbar-expand bg-body">
 
-        <span class="navbar-brand">
+        <div class="container-fluid">
 
-            CrimeLens India
+            <span class="navbar-brand">
 
-        </span>
+                CrimeLens India
 
-    </div>
+            </span>
 
-</nav>
+        </div>
 
-<div class="container mt-4">
+    </nav>
 
-    {% block content %}
+    <!-- Sidebar -->
+    <aside class="app-sidebar bg-dark shadow">
 
-    {% endblock %}
+        <div class="sidebar-brand">
+
+            <a href="/" class="brand-link text-decoration-none">
+
+                <span class="brand-text fw-bold text-white">
+
+                    CrimeLens
+
+                </span>
+
+            </a>
+
+        </div>
+
+        <div class="sidebar-wrapper">
+
+            <nav>
+
+                <ul class="nav sidebar-menu flex-column">
+
+                    <li class="nav-item">
+
+                        <a href="/" class="nav-link active">
+
+                            <i class="nav-icon fas fa-chart-line"></i>
+
+                            <p>Dashboard</p>
+
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a href="#" class="nav-link">
+
+                            <i class="nav-icon fas fa-chart-pie"></i>
+
+                            <p>Analytics</p>
+
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a href="#" class="nav-link">
+
+                            <i class="nav-icon fas fa-map-marked-alt"></i>
+
+                            <p>Crime Map</p>
+
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a href="#" class="nav-link">
+
+                            <i class="nav-icon fas fa-file-pdf"></i>
+
+                            <p>Reports</p>
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </aside>
+
+    <!-- Main Content -->
+    <main class="app-main">
+
+        <div class="app-content p-4">
+
+            {% block content %}
+
+            {% endblock %}
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer text-center">
+
+        <strong>
+
+            CrimeLens India © 2026
+
+        </strong>
+
+    </footer>
 
 </div>
+
+<!-- Bootstrap -->
+<script src="{{ url_for('static', filename='plugins/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+
+<!-- AdminLTE -->
+<script src="{{ url_for('static', filename='dist/js/adminlte.min.js') }}"></script>
+
+<script src="{{ url_for('static',
+filename='plugins/chart.js/dist/chart.umd.js') }}"></script>
+
+<script src="{{ url_for('static',
+filename='js/charts.js') }}"></script>
 
 </body>
 

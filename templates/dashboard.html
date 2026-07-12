@@ -2,23 +2,23 @@
 
 {% block content %}
 
-<h2 class="mb-4">
-
-    Dashboard
-
-</h2>
-
 <div class="row">
 
-    <div class="col-md-3">
+    <div class="col-lg-3">
 
-        <div class="card shadow">
+        <div class="small-box text-bg-primary">
 
-            <div class="card-body">
+            <div class="inner">
 
-                <h6>Total Crimes</h6>
+                <h3>{{ total_crimes }}</h3>
 
-                <h2>{{ total_crimes }}</h2>
+                <p>Total Crimes</p>
+
+            </div>
+
+            <div class="small-box-icon">
+
+                <i class="fas fa-shield-alt"></i>
 
             </div>
 
@@ -26,15 +26,21 @@
 
     </div>
 
-    <div class="col-md-3">
+    <div class="col-lg-3">
 
-        <div class="card shadow">
+        <div class="small-box text-bg-success">
 
-            <div class="card-body">
+            <div class="inner">
 
-                <h6>Total States</h6>
+                <h3>{{ total_states }}</h3>
 
-                <h2>{{ total_states }}</h2>
+                <p>States</p>
+
+            </div>
+
+            <div class="small-box-icon">
+
+                <i class="fas fa-map"></i>
 
             </div>
 
@@ -42,15 +48,21 @@
 
     </div>
 
-    <div class="col-md-3">
+    <div class="col-lg-3">
 
-        <div class="card shadow">
+        <div class="small-box text-bg-warning">
 
-            <div class="card-body">
+            <div class="inner">
 
-                <h6>Total Districts</h6>
+                <h3>{{ total_districts }}</h3>
 
-                <h2>{{ total_districts }}</h2>
+                <p>Districts</p>
+
+            </div>
+
+            <div class="small-box-icon">
+
+                <i class="fas fa-city"></i>
 
             </div>
 
@@ -58,19 +70,51 @@
 
     </div>
 
-    <div class="col-md-3">
+    <div class="col-lg-3">
 
-        <div class="card shadow">
+        <div class="small-box text-bg-danger">
+
+            <div class="inner">
+
+                <h3>₹ {{ "{:,.0f}".format(total_loss) }}</h3>
+
+                <p>Total Loss</p>
+
+            </div>
+
+            <div class="small-box-icon">
+
+                <i class="fas fa-indian-rupee-sign"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="row">
+
+    <div class="col-lg-12">
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <h3 class="card-title">
+
+                    Monthly Crime Trend
+
+                </h3>
+
+            </div>
 
             <div class="card-body">
 
-                <h6>Total Loss</h6>
-
-                <h4>
-
-                    ₹ {{ "{:,.0f}".format(total_loss) }}
-
-                </h4>
+                <canvas
+                    id="monthlyCrimeChart"
+                    height="110">
+                </canvas>
 
             </div>
 
