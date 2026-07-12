@@ -57,3 +57,53 @@ def get_monthly_crime_data():
         "labels": labels,
         "values": values
     }
+
+def get_top_states():
+
+    results = (
+        db.session.query(
+            Crime.state,
+            func.count(Crime.id)
+        )
+        .group_by(Crime.state)
+        .order_by(func.count(Crime.id).desc())
+        .limit(10)
+        .all()
+    )
+
+    return {
+        "labels": [r[0] for r in results],
+        "values": [r[1] for r in results]
+    }
+
+def get_crime_categories():
+
+    results = (
+        db.session.query(
+            Crime.crime_category,
+            func.count(Crime.id)
+        )
+        .group_by(Crime.crime_category)
+        .all()
+    )
+
+    return {
+        "labels": [r[0] for r in results],
+        "values": [r[1] for r in results]
+    }
+
+def get_arrest_status():
+
+    results = (
+        db.session.query(
+            Crime.arrest_status,
+            func.count(Crime.id)
+        )
+        .group_by(Crime.arrest_status)
+        .all()
+    )
+
+    return {
+        "labels": [r[0] for r in results],
+        "values": [r[1] for r in results]
+    }

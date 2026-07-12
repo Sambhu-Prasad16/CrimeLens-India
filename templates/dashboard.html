@@ -95,26 +95,87 @@
 </div>
 <div class="row">
 
-    <div class="col-lg-12">
+    <!-- Monthly Trend -->
+    <div class="col-lg-8">
 
-        <div class="card">
+        <div class="card shadow-sm">
 
             <div class="card-header">
-
-                <h3 class="card-title">
-
+                <h5 class="mb-0">
                     Monthly Crime Trend
-
-                </h3>
-
+                </h5>
             </div>
 
             <div class="card-body">
 
-                <canvas
-                    id="monthlyCrimeChart"
-                    height="110">
-                </canvas>
+                <canvas id="monthlyCrimeChart"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Crime Category -->
+    <div class="col-lg-4">
+
+        <div class="card shadow-sm">
+
+            <div class="card-header">
+                <h5 class="mb-0">
+                    Crime Categories
+                </h5>
+            </div>
+
+            <div class="card-body">
+
+                <canvas id="categoryChart"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row mt-4">
+
+    <!-- Top States -->
+    <div class="col-lg-7">
+
+        <div class="card shadow-sm">
+
+            <div class="card-header">
+                <h5 class="mb-0">
+                    Top 10 States by Crime
+                </h5>
+            </div>
+
+            <div class="card-body">
+
+                <canvas id="stateChart"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Arrest -->
+    <div class="col-lg-5">
+
+        <div class="card shadow-sm">
+
+            <div class="card-header">
+                <h5 class="mb-0">
+                    Arrest Status
+                </h5>
+            </div>
+
+            <div class="card-body">
+
+                <canvas id="arrestChart"></canvas>
 
             </div>
 

@@ -1,36 +1,69 @@
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
+
+    loadMonthlyChart();
+    loadStateChart();
+    loadCategoryChart();
+    loadArrestChart();
+
+});
+
+// ---------------- Monthly ----------------
+
+async function loadMonthlyChart() {
 
     const response = await fetch("/api/monthly-crimes");
+    const data = await response.json();
 
-    const result = await response.json();
-
-    const ctx = document.getElementById("monthlyCrimeChart");
-
-    new Chart(ctx, {
+    new Chart(document.getElementById("monthlyCrimeChart"), {
 
         type: "line",
 
         data: {
 
-            labels: result.labels,
+            labels: data.labels,
 
             datasets: [{
 
-                label: "Number of Crimes",
+                label: "Crimes",
 
-                data: result.values,
+                data: data.values,
 
                 borderColor: "#0d6efd",
 
-                backgroundColor: "rgba(13,110,253,0.15)",
-
-                borderWidth: 3,
+                backgroundColor: "rgba(13,110,253,0.2)",
 
                 fill: true,
 
-                tension: 0.35,
+                tension: 0.4
 
-                pointRadius: 4
+            }]
+
+        }
+
+    });
+
+}
+
+// ---------------- States ----------------
+
+async function loadStateChart() {
+
+    const response = await fetch("/api/top-states");
+    const data = await response.json();
+
+    new Chart(document.getElementById("stateChart"), {
+
+        type: "bar",
+
+        data: {
+
+            labels: data.labels,
+
+            datasets: [{
+
+                label: "Crimes",
+
+                data: data.values
 
             }]
 
@@ -38,32 +71,64 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         options: {
 
-            responsive: true,
-
-            maintainAspectRatio: false,
-
-            plugins: {
-
-                legend: {
-
-                    display: true
-
-                }
-
-            },
-
-            scales: {
-
-                y: {
-
-                    beginAtZero: true
-
-                }
-
-            }
+            indexAxis: "y"
 
         }
 
     });
 
-});
+}
+
+// ---------------- Category ----------------
+
+async function loadCategoryChart() {
+
+    const response = await fetch("/api/crime-categories");
+    const data = await response.json();
+
+    new Chart(document.getElementById("categoryChart"), {
+
+        type: "pie",
+
+        data: {
+
+            labels: data.labels,
+
+            datasets: [{
+
+                data: data.values
+
+            }]
+
+        }
+
+    });
+
+}
+
+// ---------------- Arrest ----------------
+
+async function loadArrestChart() {
+
+    const response = await fetch("/api/arrest-status");
+    const data = await response.json();
+
+    new Chart(document.getElementById("arrestChart"), {
+
+        type: "doughnut",
+
+        data: {
+
+            labels: data.labels,
+
+            datasets: [{
+
+                data: data.values
+
+            }]
+
+        }
+
+    });
+
+}

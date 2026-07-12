@@ -23,3 +23,26 @@ h2{
     font-weight:bold;
 
 }
+
+.card{
+    border-radius:15px;
+}
+
+.card-header{
+    font-weight:600;
+}
+
+canvas{
+    min-height:300px;
+}
+
+.small-box{
+    border-radius:15px;
+    transition:.3s;
+}
+
+.small-box:hover{
+
+    transform:translateY(-5px);
+
+}
