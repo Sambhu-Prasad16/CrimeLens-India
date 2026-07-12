@@ -2,23 +2,71 @@
 
 {% block content %}
 
-<div class="row">
+<div class="container-fluid">
 
-    <div class="col-lg-3">
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold mb-0">CrimeLens India Dashboard</h2>
+            <small class="text-muted">
+                Crime Analytics & Visualization
+            </small>
+        </div>
+    </div>
 
-        <div class="small-box text-bg-primary">
+    <!-- ================= Filters ================= -->
 
-            <div class="inner">
+    <div class="card shadow-sm mb-4">
 
-                <h3>{{ total_crimes }}</h3>
+        <div class="card-header">
 
-                <p>Total Crimes</p>
+            <h5 class="mb-0">
 
-            </div>
+                Dashboard Filters
 
-            <div class="small-box-icon">
+            </h5>
 
-                <i class="fas fa-shield-alt"></i>
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <label class="form-label">State</label>
+
+                    <select id="stateFilter" class="form-select">
+
+                        <option value="">All States</option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <label class="form-label">Crime Category</label>
+
+                    <select id="categoryFilter" class="form-select">
+
+                        <option value="">All Categories</option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <label class="form-label">Arrest Status</label>
+
+                    <select id="arrestFilter" class="form-select">
+
+                        <option value="">All</option>
+
+                    </select>
+
+                </div>
 
             </div>
 
@@ -26,21 +74,117 @@
 
     </div>
 
-    <div class="col-lg-3">
+    <!-- ================= KPI Cards ================= -->
 
-        <div class="small-box text-bg-success">
+    <div class="row">
 
-            <div class="inner">
+        <!-- Total Crimes -->
 
-                <h3>{{ total_states }}</h3>
+        <div class="col-lg-3 col-md-6 mb-4">
 
-                <p>States</p>
+            <div class="small-box text-bg-primary">
+
+                <div class="inner">
+
+                    <h3 id="totalCrimes">
+
+                        {{ total_crimes }}
+
+                    </h3>
+
+                    <p>Total Crimes</p>
+
+                </div>
+
+                <div class="small-box-icon">
+
+                    <i class="fas fa-shield-alt"></i>
+
+                </div>
 
             </div>
 
-            <div class="small-box-icon">
+        </div>
 
-                <i class="fas fa-map"></i>
+        <!-- States -->
+
+        <div class="col-lg-3 col-md-6 mb-4">
+
+            <div class="small-box text-bg-success">
+
+                <div class="inner">
+
+                    <h3 id="totalStates">
+
+                        {{ total_states }}
+
+                    </h3>
+
+                    <p>States</p>
+
+                </div>
+
+                <div class="small-box-icon">
+
+                    <i class="fas fa-map"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Districts -->
+
+        <div class="col-lg-3 col-md-6 mb-4">
+
+            <div class="small-box text-bg-warning">
+
+                <div class="inner">
+
+                    <h3 id="totalDistricts">
+
+                        {{ total_districts }}
+
+                    </h3>
+
+                    <p>Districts</p>
+
+                </div>
+
+                <div class="small-box-icon">
+
+                    <i class="fas fa-city"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Total Loss -->
+
+        <div class="col-lg-3 col-md-6 mb-4">
+
+            <div class="small-box text-bg-danger">
+
+                <div class="inner">
+
+                    <h3 id="totalLoss">
+
+                        ₹ {{ "{:,.0f}".format(total_loss) }}
+
+                    </h3>
+
+                    <p>Total Estimated Loss</p>
+
+                </div>
+
+                <div class="small-box-icon">
+
+                    <i class="fas fa-indian-rupee-sign"></i>
+
+                </div>
 
             </div>
 
@@ -48,21 +192,53 @@
 
     </div>
 
-    <div class="col-lg-3">
+    <!-- ================= Charts Row 1 ================= -->
 
-        <div class="small-box text-bg-warning">
+    <div class="row">
 
-            <div class="inner">
+        <div class="col-lg-8 mb-4">
 
-                <h3>{{ total_districts }}</h3>
+            <div class="card shadow-sm">
 
-                <p>Districts</p>
+                <div class="card-header">
+
+                    <h5 class="mb-0">
+
+                        Monthly Crime Trend
+
+                    </h5>
+
+                </div>
+
+                <div class="card-body">
+
+                    <canvas id="monthlyCrimeChart"></canvas>
+
+                </div>
 
             </div>
 
-            <div class="small-box-icon">
+        </div>
 
-                <i class="fas fa-city"></i>
+        <div class="col-lg-4 mb-4">
+
+            <div class="card shadow-sm">
+
+                <div class="card-header">
+
+                    <h5 class="mb-0">
+
+                        Crime Categories
+
+                    </h5>
+
+                </div>
+
+                <div class="card-body">
+
+                    <canvas id="categoryChart"></canvas>
+
+                </div>
 
             </div>
 
@@ -70,21 +246,53 @@
 
     </div>
 
-    <div class="col-lg-3">
+    <!-- ================= Charts Row 2 ================= -->
 
-        <div class="small-box text-bg-danger">
+    <div class="row">
 
-            <div class="inner">
+        <div class="col-lg-7 mb-4">
 
-                <h3>₹ {{ "{:,.0f}".format(total_loss) }}</h3>
+            <div class="card shadow-sm">
 
-                <p>Total Loss</p>
+                <div class="card-header">
+
+                    <h5 class="mb-0">
+
+                        Top 10 States by Crime
+
+                    </h5>
+
+                </div>
+
+                <div class="card-body">
+
+                    <canvas id="stateChart"></canvas>
+
+                </div>
 
             </div>
 
-            <div class="small-box-icon">
+        </div>
 
-                <i class="fas fa-indian-rupee-sign"></i>
+        <div class="col-lg-5 mb-4">
+
+            <div class="card shadow-sm">
+
+                <div class="card-header">
+
+                    <h5 class="mb-0">
+
+                        Arrest Status
+
+                    </h5>
+
+                </div>
+
+                <div class="card-body">
+
+                    <canvas id="arrestChart"></canvas>
+
+                </div>
 
             </div>
 
@@ -92,44 +300,55 @@
 
     </div>
 
-</div>
-<div class="row">
+    <!-- ================= Recent Crime Table ================= -->
 
-    <!-- Monthly Trend -->
-    <div class="col-lg-8">
+    <div class="card shadow-sm">
 
-        <div class="card shadow-sm">
+        <div class="card-header d-flex justify-content-between align-items-center">
 
-            <div class="card-header">
-                <h5 class="mb-0">
-                    Monthly Crime Trend
-                </h5>
-            </div>
+            <h5 class="mb-0">
 
-            <div class="card-body">
+                Recent Crime Records
 
-                <canvas id="monthlyCrimeChart"></canvas>
+            </h5>
 
-            </div>
+            <span class="badge bg-primary">
+
+                Latest 20 Records
+
+            </span>
 
         </div>
 
-    </div>
+        <div class="card-body">
 
-    <!-- Crime Category -->
-    <div class="col-lg-4">
+            <div class="table-responsive">
 
-        <div class="card shadow-sm">
+                <table
+                    class="table table-striped table-hover align-middle"
+                    id="crimeTable">
 
-            <div class="card-header">
-                <h5 class="mb-0">
-                    Crime Categories
-                </h5>
-            </div>
+                    <thead class="table-dark">
 
-            <div class="card-body">
+                        <tr>
 
-                <canvas id="categoryChart"></canvas>
+                            <th>Crime ID</th>
+                            <th>Date</th>
+                            <th>State</th>
+                            <th>District</th>
+                            <th>Category</th>
+                            <th>Arrest</th>
+                            <th>Loss</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    </tbody>
+
+                </table>
 
             </div>
 
@@ -141,41 +360,25 @@
 
 <div class="row mt-4">
 
-    <!-- Top States -->
-    <div class="col-lg-7">
+    <div class="col-12">
 
         <div class="card shadow-sm">
 
             <div class="card-header">
+
                 <h5 class="mb-0">
-                    Top 10 States by Crime
+
+                    Crime Map
+
                 </h5>
+
             </div>
 
             <div class="card-body">
 
-                <canvas id="stateChart"></canvas>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- Arrest -->
-    <div class="col-lg-5">
-
-        <div class="card shadow-sm">
-
-            <div class="card-header">
-                <h5 class="mb-0">
-                    Arrest Status
-                </h5>
-            </div>
-
-            <div class="card-body">
-
-                <canvas id="arrestChart"></canvas>
+                <div id="crimeMap"
+                     style="height:600px;border-radius:10px;">
+                </div>
 
             </div>
 

@@ -4,9 +4,7 @@
 <head>
 
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>CrimeLens India</title>
 
@@ -22,32 +20,48 @@
     <link rel="stylesheet"
           href="{{ url_for('static', filename='dist/css/adminlte.min.css') }}">
 
+    <!-- DataTables CSS -->
+    <link rel="stylesheet"
+          href="https://cdn.datatables.net/2.3.2/css/dataTables.dataTables.min.css">
+
+    <link rel="stylesheet"
+          href="https://cdn.datatables.net/buttons/3.2.4/css/buttons.dataTables.min.css">
+
     <!-- Custom CSS -->
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/style.css') }}">
 
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+    
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
 </head>
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
 
 <div class="app-wrapper">
 
-    <!-- Navbar -->
-    <nav class="app-header navbar navbar-expand bg-body">
+    <!-- ================= Navbar ================= -->
+
+    <nav class="app-header navbar navbar-expand bg-body shadow-sm">
 
         <div class="container-fluid">
 
-            <span class="navbar-brand">
-
+            <a class="navbar-brand fw-bold" href="/">
+                <i class="fas fa-shield-alt me-2 text-primary"></i>
                 CrimeLens India
-
-            </span>
+            </a>
 
         </div>
 
     </nav>
 
-    <!-- Sidebar -->
+    <!-- ================= Sidebar ================= -->
+
     <aside class="app-sidebar bg-dark shadow">
 
         <div class="sidebar-brand">
@@ -110,12 +124,24 @@
 
                         <a href="#" class="nav-link">
 
-                            <i class="nav-icon fas fa-file-pdf"></i>
+                            <i class="nav-icon fas fa-file-export"></i>
 
-                            <p>Reports</p>
+                            <p>Export Reports</p>
 
                         </a>
 
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a href="/upload" class="nav-link">
+                        
+                            <i class="fas fa-upload nav-icon"></i>
+                        
+                            <p>Upload Dataset</p>
+                        
+                        </a>
+                        
                     </li>
 
                 </ul>
@@ -126,21 +152,22 @@
 
     </aside>
 
-    <!-- Main Content -->
+    <!-- ================= Main ================= -->
+
     <main class="app-main">
 
         <div class="app-content p-4">
 
             {% block content %}
-
             {% endblock %}
 
         </div>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="app-footer text-center">
+    <!-- ================= Footer ================= -->
+
+    <footer class="app-footer text-center py-3">
 
         <strong>
 
@@ -152,17 +179,49 @@
 
 </div>
 
+<!-- ================= JavaScript ================= -->
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
 <!-- Bootstrap -->
 <script src="{{ url_for('static', filename='plugins/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 
 <!-- AdminLTE -->
 <script src="{{ url_for('static', filename='dist/js/adminlte.min.js') }}"></script>
 
-<script src="{{ url_for('static',
-filename='plugins/chart.js/dist/chart.umd.js') }}"></script>
+<!-- Chart.js -->
+<script src="{{ url_for('static', filename='plugins/chart.js/dist/chart.umd.js') }}"></script>
 
-<script src="{{ url_for('static',
-filename='js/charts.js') }}"></script>
+<!-- DataTables -->
+<script src="https://cdn.datatables.net/2.3.2/js/dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/buttons/3.2.4/js/dataTables.buttons.min.js"></script>
+
+<script src="https://cdn.datatables.net/buttons/3.2.4/js/buttons.html5.min.js"></script>
+
+<script src="https://cdn.datatables.net/buttons/3.2.4/js/buttons.print.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+
+<!-- Project JavaScript -->
+<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/filters.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/dashboard_filters.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/map.js') }}"></script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 
 </body>
 
