@@ -13,6 +13,11 @@ app.config.from_object(Config)
 
 db.init_app(app)
 
+@app.route("/test-db")
+def test_db():
+    from models.crime import Crime
+    return f"Total Crimes: {Crime.query.count()}"
+
 app.register_blueprint(dashboard_bp)
 app.register_blueprint(api_bp)
 
