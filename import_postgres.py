@@ -5,7 +5,7 @@ from app import app
 from models import db
 from models.crime import Crime
 
-CSV_FILE = "dataset/india_crime_dataset_2025.csv"
+CSV_FILE = "dataset/india_crime_dataset_2500.csv"
 
 with app.app_context():
 
